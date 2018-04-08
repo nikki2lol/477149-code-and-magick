@@ -14,7 +14,7 @@ var barFullWidth = BAR_SPACE + GAP + BAR_WIDTH;
 
 var getMaxElement = function (arr) {
   var maxElement = arr[0];
-  for ( var i = 0; i < arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     if (arr[i] > maxElement) {
       maxElement = arr[i];
     }
@@ -34,18 +34,18 @@ var renderBars = function (ctx, x, y, name, resultHeight) {
     ctx.fillStyle = 'rgba(0, 0, 255, 1)';
   }
   ctx.fillRect(x, y, BAR_WIDTH, resultHeight);
-}
+};
 
 var renderNames = function (ctx, x, y, name) {
   ctx.fillStyle = '#000000';
   ctx.fillText(name, x, y);
-}
+};
 
 var renderTimes = function (ctx, x, y, time) {
   var timeBeatiful = Math.round(time);
   ctx.fillStyle = '#000000';
   ctx.fillText(timeBeatiful, x, y);
-}
+};
 
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + 10, CLOUD_Y + 10, 'rgba(0, 0, 0, 0.7)');
@@ -60,7 +60,7 @@ window.renderStatistics = function (ctx, names, times) {
 
   for (var i = 0; i < names.length; i++) {
     renderBars(ctx, CLOUD_X + GAP + barFullWidth * i, CLOUD_Y + GAP + (PREVIEW_HEIGHT + GAP) + SCORE_HEIGHT + BAR_HEIGHT - times[i] * BAR_HEIGHT / maxTime + GAP, names[i], times[i] * BAR_HEIGHT / maxTime);
-    renderNames(ctx, CLOUD_X + GAP + barFullWidth * i, CLOUD_Y + GAP + (PREVIEW_HEIGHT + GAP) + SCORE_HEIGHT + BAR_HEIGHT - times[i] *  BAR_HEIGHT / maxTime, names[i]);
+    renderNames(ctx, CLOUD_X + GAP + barFullWidth * i, CLOUD_Y + GAP + (PREVIEW_HEIGHT + GAP) + SCORE_HEIGHT + BAR_HEIGHT - times[i] * BAR_HEIGHT / maxTime, names[i]);
     renderTimes(ctx, CLOUD_X + GAP + barFullWidth * i, CLOUD_HEIGHT - CLOUD_Y, times[i]);
   }
   // не стал добавлять в тело цикла на нахождение максимального элемента, т.к. в демке было сказано, что мы будем его использовать в будущем, поэтому было бы неплохо не захламлять его сторонними значениями
