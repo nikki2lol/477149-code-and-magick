@@ -35,7 +35,7 @@ var renderBars = function (ctx, x, y, name, resultHeight) {
 var renderText = function (ctx, x, y, text) {
   ctx.font = '16px PT Mono';
   ctx.fillStyle = '#000000';
-  ctx.fillText(isNaN(text) ? text : Math.round(text), x, y);
+  ctx.fillText(text, x, y);
 };
 
 var renderContent = function (ctx, names, times) {
@@ -51,7 +51,7 @@ var renderContent = function (ctx, names, times) {
 
     renderBars(ctx, positionX, positionY + GAP, names[i], times[i] * BAR_HEIGHT / maxTime);
     renderText(ctx, positionX, positionY, names[i]);
-    renderText(ctx, positionX, CLOUD_HEIGHT - CLOUD_Y, times[i]);
+    renderText(ctx, positionX, CLOUD_HEIGHT - CLOUD_Y, Math.round(times[i]));
   }
 };
 
